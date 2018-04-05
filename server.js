@@ -66,10 +66,10 @@ app.get("/scrape", function (req, res) {
                 .attr("href");
 
             // Create a new Article using the `result` object built from scraping
-            db.Article.create(result)
-            .then(function (dbArticle) {
+            db.Headline.create(result)
+            .then(function (dbHeadline) {
                 // View the added result in the console
-                console.log(dbArticle);
+                console.log(dbHeadline);
             })
             .catch(function (err) {
                 // If an error occurred, send it to the client
