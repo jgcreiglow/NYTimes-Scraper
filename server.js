@@ -81,7 +81,7 @@ app.get("/scrape", function (req, res) {
 
 
 app.get("/", function (req, res) {
-    res.render("");
+    res.render("home");
 });
 app.get("/home", function (req, res) {
     res.render("home");
