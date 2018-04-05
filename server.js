@@ -6,6 +6,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
+var request = require("request");
 var db = require("./models");
 // Create an instance of the express app.
 var app = express();
