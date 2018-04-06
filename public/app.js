@@ -8,7 +8,7 @@ $.getJSON("/articles", function(data) {
   });
   
   
-  // Whenever someone clicks a div tag
+  // Whenever someone clicks a  tag
   $(document).on("click", "div", function() {
     // Empty the notes from the note section
     $("#notes").empty();

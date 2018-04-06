@@ -7,7 +7,7 @@ var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
 var request = require("request");
-var db = require("./models");
+
 // Create an instance of the express app.
 var app = express();
 
@@ -40,7 +40,8 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 // Routes
-
+var db = require("./models");
+console.log("db", db)
 app.get("/scrape", function (req, res) {
     // First, we grab the body of the html with request
     axios.get("http://www.nytimes.com/").then(function (response) {
@@ -58,9 +59,9 @@ app.get("/scrape", function (req, res) {
             result.link = $(this)
                 .children("a")
                 .attr("href");
-
+    
             // Create a new Article using the `result` object built from scraping
-            db.Article.create(result)
+            db.Headline.create(result)
             .then(function (dbArticle) {
                 // View the added result in the console
                 console.log("hey" + dbArticle);
@@ -77,7 +78,7 @@ app.get("/scrape", function (req, res) {
 //  / Route for getting all Articles from the db
 app.get("/articles", function (req, res) {
    // Grab every document in the Articles collection
-   db.Article.find({})
+   db.Headline.find({})
      .then(function(dbArticle) {
        // If we were able to successfully find Articles, send them back to the client
        res.json(dbArticle);
